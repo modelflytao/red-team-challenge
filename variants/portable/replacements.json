@@ -1,0 +1,111 @@
+{
+  "_comment": "通用版(供 Codex、dsh、Kimi、ZCode 等工具使用)的替换规则。由 scripts/deploy-skill-portable.ps1 读取。每条规则必须在源文件中命中,否则脚本报错停止——改了 skills/ 里的对应句子后,要同步改这里。find/replace 都写单行;换行用 {NL}。",
+  "forbidden": [
+    "WebFetch",
+    "WebSearch",
+    "Agent 工具",
+    "Workflow",
+    "lark-",
+    "同一条消息"
+  ],
+  "rules": [
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "regex": true,
+      "find": "(?m)^version: ([^\\r\\n]+)",
+      "replace": "metadata:{NL}  version: \"$1\""
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "regex": true,
+      "find": "(?m)^(> \\*\\*版本 v[^\\r\\n]*变更记录见文末)",
+      "replace": "$1{NL}>{NL}> **通用版**:本文件由仓库 `skills/` 经 `scripts/deploy-skill-portable.ps1` 生成,供 Codex、dsh、Kimi、ZCode 等工具使用,不要直接修改。文中\"联网\"指所用工具的搜索与打开网页能力,\"子代理\"指所用工具的并行或协作子代理能力。**所用工具没有子代理能力时**,由主会话依次完成各子代理的步骤(含反向复核),并在报告中注明\"未派子代理,由主会话代做\";没有联网能力时,所有需要来源的判定一律按\"查无来源\"处理,不得凭记忆下结论。"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "主会话用 WebFetch 打开该判定引用的反证 URL",
+      "replace": "主会话联网打开该判定引用的反证 URL"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "飞书链接用 lark-doc 拉取",
+      "replace": "飞书链接用所用工具的飞书文档读取能力拉取(没有该能力则请用户粘贴正文)"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "无依赖的子代理在同一条消息里一次性并行派发。",
+      "replace": "无依赖的子代理并行派发。"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "推到其飞书任务(lark-task)",
+      "replace": "推到其飞书任务(所用工具有此能力时)"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "用 Agent 工具分派子代理从三个视角各打一遍",
+      "replace": "分派子代理从三个视角各打一遍"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "无依赖者同一条消息并行派发:",
+      "replace": "无依赖者并行派发:"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "## 升级到 Workflow",
+      "replace": "## 升级到并行子代理流水线"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "**建议用户**用 Workflow 并行流水线(发现断言→并行核查→🔴反向复核→汇总),现成脚本模板见 `references/workflow-template.md`。Workflow 需用户显式授权——先征得同意再跑。",
+      "replace": "**建议用户**用并行子代理流水线(发现断言→并行核查→🔴反向复核→汇总),执行模板见 `references/workflow-template.md`。全面并行深查需用户显式授权——先征得同意再跑。"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "**用户拒绝 Workflow 时的降级策略**",
+      "replace": "**用户拒绝并行深查时的降级策略**"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "SKILL.md",
+      "find": "Workflow 升级与诚实降级",
+      "replace": "并行流水线升级与诚实降级"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "references/subagent-prompt.md",
+      "find": "用 WebSearch / WebFetch 联网搜索真实来源",
+      "replace": "联网搜索并打开网页查找真实来源"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "references/subagent-prompt.md",
+      "find": "用 WebFetch 打开反证 URL",
+      "replace": "联网打开反证 URL"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "references/subagent-prompt.md",
+      "find": "用 WebSearch 独立搜索",
+      "replace": "独立联网搜索"
+    },
+    {
+      "skill": "red-team-challenge",
+      "file": "references/grilling.md",
+      "find": "skill 自己升级到 Workflow 流水线不属此类",
+      "replace": "skill 自己升级到并行子代理流水线不属此类"
+    }
+  ]
+}

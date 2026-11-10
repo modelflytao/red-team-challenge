@@ -65,6 +65,14 @@
 ./scripts/deploy-skill.ps1
 ```
 
+**其他工具(Codex、dsh、Kimi、ZCode)**:用另一个脚本生成并部署"通用版",把 Claude Code 专有的工具名换成能力描述:
+
+```powershell
+./scripts/deploy-skill-portable.ps1
+```
+
+它写入 `~/.agents/skills/`(Codex、dsh、Kimi 都读这里)和 `~/.zcode/skills/`。通用版是生成的,不要手改;替换规则在 `variants/portable/replacements.json`,任何一条在源文件里匹配不上脚本就报错。目标位置若有不是本脚本生成的旧副本,会先备份到 `~/.agents/backups/`。通用版只保证内容与仓库一致,没有在这些工具里逐一跑过。
+
 依赖:Claude Code(需 Agent 子代理 + WebSearch/WebFetch);可选 lark-doc(飞书链接)、Workflow(断言 >15 条时的并行彻查)。
 
 ## 看个真实例子
@@ -83,6 +91,8 @@ skills/red-team-challenge/   # skill 本体(唯一事实来源)
 docs/superpowers/            # 设计文档、实现计划、自挑战复盘
 samples/                     # 两份真实挑战报告
 scripts/deploy-skill.ps1     # 部署到 ~/.claude/skills/
+scripts/deploy-skill-portable.ps1  # 生成通用版并部署到 ~/.agents/skills/、~/.zcode/skills/
+variants/portable/           # 通用版的替换规则与整文件替换
 ```
 
 ## 它是怎么进化的
