@@ -2,7 +2,7 @@
 
 > A hostile senior reviewer for your docs and ideas — it assumes everything you wrote is wrong until proven otherwise, and does exactly one job: find the holes. A Claude Code skill.
 
-**版本 v1.2.0** · Claude Code skill · 中文
+**版本 v1.2.1** · Claude Code skill · 中文
 
 ## 这是什么
 
@@ -69,7 +69,7 @@
 
 ## 看个真实例子
 
-`samples/` 里有两份真实输出:
+`samples/` 里有两份真实输出(v1.0 时期生成,不含 v1.2.0 起才有的第七、八节):
 
 - **《生成式 AI 调研》** — 抓出"据 Gartner 2024,全球 92% 企业已在生产环境部署生成式 AI"系**编造**:真实 Gartner 数据为 29% 已部署,92% 疑为把"到 2026 年超 80%"的未来预测篡改成现状。
 - **《比微信快 10 倍的国产 IM》** — 证伪"半年抢 1000 万用户"(来往、子弹短信、米聊的历史失败反复证伪),并指出攻击点选错了战场:壁垒是社交关系链,不是速度。
